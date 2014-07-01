@@ -1,5 +1,1 @@
-# This is a test
-
-## Second level
-
-### Third level
+# Useful WP hacks and modules by CYBERLEAF.PL
