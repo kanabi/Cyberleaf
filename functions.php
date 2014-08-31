@@ -15,7 +15,7 @@ function project_post_type() {
     'not_found_in_trash'  => __( 'Project not found in trash', 'text_domain' ),
   );
   $args = array(
-    'menu_icon' 					=> 'dashicons-clipboard',
+    'menu_icon' 				  => 'dashicons-clipboard',
     'label'               => __( 'project', 'text_domain' ),
     'description'         => __( 'project', 'text_domain' ),
     'labels'              => $labels,
