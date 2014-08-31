@@ -1,3 +1,17 @@
+
+
+// === WPML Language Selector ===
+function language_selector() {
+  $languages = icl_get_languages('skip_missing=0&orderby=code');
+  if(!empty($languages)) {
+    foreach($languages as $l) {
+      if(!$l['active']) echo '<a class="btn btn-default" href="'.$l['url'].'">'.$l['language_code'].'</a>';
+      if($l['active']) echo '<a class="btn btn-default" disabled="disabled">'.$l['language_code'].'</a>';
+    }
+  }
+}
+
+// custom post type
 function project_post_type() {
   $labels = array(
     'name'                => _x( 'Project', 'Post Type General Name', 'text_domain' ),
@@ -37,3 +51,12 @@ function project_post_type() {
   register_post_type( 'project', $args );
 }
 add_action( 'init', 'project_post_type', 0 );
+
+// === Dashicons ===
+add_action( 'wp_enqueue_scripts', 'load_dashicons_front_end' );
+function load_dashicons_front_end() {
+  wp_enqueue_style( 'dashicons' );
+}
+
+// show admin bar
+show_admin_bar( false );
