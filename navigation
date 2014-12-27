@@ -13,3 +13,15 @@ $(document).ready(function() {
     }
   });
 });
+
+// nav px fix 2
+jQuery(document).ready(function(){
+var x = $(".nav");
+  $(document).scroll(function() {    
+    var tofix = $("section#jp"),
+        diff = tofix[0].offsetTop - window.pageYOffset;
+    if (diff < 60) {
+      tofix.css({"position":"fixed", "top":"60px"});
+    }    
+  });
+});
