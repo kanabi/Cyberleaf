@@ -1,0 +1,15 @@
+// nav px fix
+$(document).ready(function() {
+  var s = $('nav.navbar-secondary');
+  var t = $('div.primary');
+  $(window).scroll(function() {
+    var winpos = $(window).scrollTop();
+    if (winpos >= 320 || !$('section').is('#expo')) {
+      s.addClass("navbar-fixed");
+      t.addClass("primary-fixed");            
+    } else {
+      s.removeClass("navbar-fixed");
+      t.removeClass("primary-fixed");
+    }
+  });
+});
