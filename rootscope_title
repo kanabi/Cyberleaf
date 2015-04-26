@@ -1,0 +1,28 @@
+app.controller('MainCtrl', function($rootScope, $scope, $routeSegment, loader){
+  console.log('MainCtrl loaded.');
+  $rootScope.title = 'Board Advisors | Specjalistyczne publikacje i szkolenia';  
+  $scope.$routeSegment = $routeSegment;
+  $scope.loader = loader;
+  $scope.$on('routeSegmentChange', function(){
+    loader.show = false;
+  });
+});
+app.controller('ItemCtrl', function($scope, $routeSegment, $routeParams){
+  $scope.$routeSegment = $routeSegment;
+  $scope.item = { id: $routeSegment.$routeParams.id };
+  $scope.test = { textValue: '' };
+});
+app.controller('PostCtrl', ['$rootScope', '$scope', '$routeParams', '$http', function($rootScope, $scope, $routeParams, $http){
+  console.log('PostCtrl loaded.');
+  $http.get($scope.api + '/posts/' + $routeParams.id).success(function(res){
+    $scope.post = res;
+    $rootScope.title = res.title + ' | Board Advisors';
+  });
+}]);
+app.controller('PostedCtrl', ['$rootScope', '$scope', '$routeParams', '$http', function($rootScope, $scope, $routeParams, $http){
+  console.log('PostedCtrl loaded.');
+  $http.get($scope.api + '/posts/?filter[name]=' + $routeParams.slug).success(function(res){
+    $scope.posts = res;
+    $rootScope.title = res.title + ' | Board Advisors';
+  });
+}]);
