@@ -1,0 +1,83 @@
+// buttton with transparent background, border-radius and gradient borders
+
+.input-group {
+  border-radius: 30px;
+  line-height: 0;
+  overflow: hidden;
+  position: relative;
+
+  &:before {
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #000, @rb-pink);
+    border-image-slice: 1;
+    border-left-width: 0;
+    border-right-width: 0;
+    width: 75%;
+    border-radius: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+
+  &:after,
+  .input-group-btn::before {
+    box-sizing: border-box;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 30px;
+    z-index: 0;
+  }
+
+  &:after {
+    border: 1px solid #000;
+    border-radius: 20px 0 0 20px;
+    border-right: 0;
+    left: 0;
+  }
+
+  input {
+    color: #000;
+    height: 40px;
+    padding: 0 0 0 20px;
+
+    &::-webkit-input-placeholder {
+      color: #000;
+    }
+    // ie10 fix
+    &::-ms-clear {
+      display: none;
+    }
+
+    &:placeholder-shown {
+      color: #000;
+    }
+  }
+
+  .input-group-btn {
+    button {
+      .glyphicon {
+        position: relative;
+        font-family: 'Glyphicons Halflings';
+
+        &:before {
+          content: "\e003";
+        }
+      }
+
+      &::before {
+        border: 1px solid @rb-pink;
+        border-radius: 0 20px 20px 0;
+        border-left: 0;
+        right: 0;
+      }
+    }
+  }
+}
